@@ -11,6 +11,9 @@ public class Move {
     private Position endPosition;
     private ChessPiece chessPiece;
 
+    public Move(){
+    }
+
     public Move(Position startPosition, Position endPosition, ChessPiece chessPiece){
         this.startPosition = startPosition;
         this.endPosition = endPosition;
