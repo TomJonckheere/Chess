@@ -1,6 +1,5 @@
 package game;
 
-import model.pieces.ChessPiece;
 
 /**
  * @author Tom
@@ -9,15 +8,13 @@ public class Move {
 
     private Position startPosition;
     private Position endPosition;
-    private ChessPiece chessPiece;
 
     public Move(){
     }
 
-    public Move(Position startPosition, Position endPosition, ChessPiece chessPiece){
+    public Move(Position startPosition, Position endPosition){
         this.startPosition = startPosition;
         this.endPosition = endPosition;
-        this.chessPiece = chessPiece;
     }
 
     public Position getStartPosition()
@@ -28,11 +25,6 @@ public class Move {
     public Position getEndPosition()
     {
         return endPosition;
-    }
-
-    public ChessPiece getChessPiece()
-    {
-        return chessPiece;
     }
 
 }
