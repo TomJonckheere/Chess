@@ -4,6 +4,9 @@ import model.enums.Color;
 import model.enums.PieceType;
 import model.enums.Row;
 
+import java.util.Arrays;
+import java.util.List;
+
 /**
  * @author Tom
  */
@@ -48,4 +51,6 @@ public abstract class ChessPiece implements Piece {
     public void setRow(Row row) {
         this.row = row;
     }
+
+
 }

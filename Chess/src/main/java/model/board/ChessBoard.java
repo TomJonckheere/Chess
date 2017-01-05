@@ -56,6 +56,11 @@ public class ChessBoard {
         piece.setColumn(column);
     }
 
+    public Field getField(Integer row, Integer column)
+    {
+        return board.get(row).get(column);
+    }
+
     public void clearFieldPiece(Integer row, Integer column)
     {
         board.get(row).get(column).setPiece(null);
