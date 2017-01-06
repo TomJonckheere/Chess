@@ -5,6 +5,8 @@ import model.enums.MoveResult;
 import model.enums.PieceType;
 import model.enums.Row;
 
+import java.util.List;
+
 /**
  * @author Tom
  */
@@ -22,5 +24,15 @@ public class Bishop extends ChessPiece implements Piece {
     @Override
     public PieceType getPieceType() {
         return PieceType.BISHOP;
+    }
+
+    @Override
+    public List<AllowedMove> getAllowedMoves() {
+        return null;
+    }
+
+    @Override
+    public List<AllowedMove> getAllowedTakeMoves() {
+        return null;
     }
 }

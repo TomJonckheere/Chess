@@ -21,42 +21,41 @@ public class MoveValidator {
 
         Integer endRow = move.getEndPosition().getRow();
         Integer endColumn = move.getEndPosition().getColumn();
+        Integer startRow = move.getStartPosition().getRow();
+        Integer startColumn = move.getStartPosition().getColumn();
         ChessPiece piece = ChessBoard.getChessBoard().getField(move.getStartPosition().getRow(), move.getStartPosition().getColumn()).getPiece();
 
-//        if(ChessBoard.getChessBoard().getBoard().get(endRow).get(endColumn).getPiece() != null &&
-//                ChessBoard.getChessBoard().getBoard().get(endRow).get(endColumn).getPiece().getColor().equals(this.getColor()))
-//        {
-//            return false;
-//        }
-//
-//        boolean takeOptions = allowedTakeMoves.stream()
-//                .filter(m ->
-//                {
-//                    if(this.getColor()== Color.WHITE){
-//                        return getRow().getRowNumber() + m.getRowIncrement() == endRow && getColumn() + m.getColumnIncrement() == endColumn;
-//                    }else{
-//                        return getRow().getRowNumber() - m.getRowIncrement() == endRow && getColumn() - m.getColumnIncrement() == endColumn;
-//                    }
-//                })
-//                .collect(Collectors.toList()).size()>0;
-//
-//        boolean moveOptions = allowedMoves.stream()
-//                .filter(m ->
-//                {
-//                    if(this.getColor()==Color.WHITE){
-//                        return getRow().getRowNumber() + m.getRowIncrement() == endRow && getColumn() + m.getColumnIncrement() == endColumn
-//                                && ChessBoard.getChessBoard().getBoard().get(endRow).get(endColumn).getPiece() ==null;
-//                    }else{
-//                        return getRow().getRowNumber() - m.getRowIncrement() == endRow && getColumn() - m.getColumnIncrement() == endColumn
-//                                && ChessBoard.getChessBoard().getBoard().get(endRow).get(endColumn).getPiece() ==null;
-//                    }
-//                })
-//                .filter(m -> m.getCanAlwaysBeDone() || (!m.getCanAlwaysBeDone() && !hasMoved))
-//                .collect(Collectors.toList()).size()>0;
-//
-//
-//        return takeOptions || moveOptions;
-        return true;
+        //TODO: a check if the correct player makes the correct move should also be implemented... In time...
+
+        //TODO: for now, this is only pawn logic...
+        boolean takeOptions = piece.getAllowedTakeMoves().stream()
+                .filter(m ->
+                {
+                    if(piece.getColor()== Color.WHITE){
+                        return startRow + m.getRowIncrement() == endRow && startColumn + m.getColumnIncrement() == endColumn;
+                    }else{
+                        return startRow - m.getRowIncrement() == endRow && startColumn - m.getColumnIncrement() == endColumn;
+                    }
+                })
+                .collect(Collectors.toList()).size()>0;
+
+        boolean moveOptions = piece.getAllowedMoves().stream()
+                .filter(m ->
+                {
+                    if(piece.getColor()==Color.WHITE){
+                        return startRow + m.getRowIncrement() == endRow && startColumn + m.getColumnIncrement() == endColumn
+                                && ChessBoard.getChessBoard().getBoard().get(endRow).get(endColumn).getPiece() ==null;
+                    }else{
+                        return startRow - m.getRowIncrement() == endRow && startColumn - m.getColumnIncrement() == endColumn
+                                && ChessBoard.getChessBoard().getBoard().get(endRow).get(endColumn).getPiece() ==null;
+                    }
+                })
+                //TODO add hasMoved check...
+                .filter(m -> m.getCanAlwaysBeDone() || (!m.getCanAlwaysBeDone() /*&& !piece.hasMoved)*/))
+                .collect(Collectors.toList()).size()>0;
+
+
+        return takeOptions || moveOptions;
     }
 
     private boolean validateMoveObjectIsCorrect(Move move)

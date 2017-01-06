@@ -5,6 +5,8 @@ import model.enums.MoveResult;
 import model.enums.PieceType;
 import model.enums.Row;
 
+import java.util.List;
+
 /**
  * @author Tom
  */
@@ -31,6 +33,16 @@ public class Rook extends ChessPiece implements Piece, SpecialMove {
 
     @Override
     public Boolean hasMoved() {
+        return null;
+    }
+
+    @Override
+    public List<AllowedMove> getAllowedMoves() {
+        return null;
+    }
+
+    @Override
+    public List<AllowedMove> getAllowedTakeMoves() {
         return null;
     }
 }

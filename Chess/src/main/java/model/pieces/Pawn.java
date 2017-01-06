@@ -99,6 +99,16 @@ public class Pawn extends ChessPiece implements SpecialMove {
     }
 
     @Override
+    public List<AllowedMove> getAllowedMoves() {
+        return allowedMoves;
+    }
+
+    @Override
+    public List<AllowedMove> getAllowedTakeMoves() {
+        return allowedTakeMoves;
+    }
+
+    @Override
     public void doSpecialMove() {
         //Can go 2 fields ahead when first move
     }

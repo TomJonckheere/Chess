@@ -52,5 +52,9 @@ public abstract class ChessPiece implements Piece {
         this.row = row;
     }
 
+    public abstract List<AllowedMove> getAllowedMoves();
+
+    public abstract List<AllowedMove> getAllowedTakeMoves();
+
 
 }
